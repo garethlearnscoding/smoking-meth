@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>{{ page.title }}</title>
-  <link rel="stylesheet" href="/assets/styles/style.css">
+  <link rel="stylesheet" href="{{ /assets/styles/style.css | relative_url }}">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <!-- <a href="/">Home</a>
     <a href="/10-sequences-and-series/">10 Sequences and Series</a> -->
     {% for page in site.data.nav %}
-      <a href="{{page.link}}">{{page.name}}</a>
+      <a href="{{page.link | relative_url}}">{{page.name}}</a>
     {% endfor %}
   </aside>
 
