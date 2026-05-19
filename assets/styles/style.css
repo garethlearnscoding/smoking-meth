@@ -48,7 +48,7 @@ body {
 
 /* MAIN CONTENT */
 .content {
-  margin-left: 390px;
+  margin-left: 400px;
   padding: 40px;
   max-width: 900px;
 
@@ -95,12 +95,6 @@ body {
     margin: 0;
 }
 
-#sidebar-toggle {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1000;
-}
 
 .sidebar.closed {
     transform: translateX(-100%);

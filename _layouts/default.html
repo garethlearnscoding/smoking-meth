@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ '/assets/styles/style.css' | relative_url}}">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&icon_names=" rel="stylesheet">
 </head>
 
 <body>
@@ -15,9 +16,9 @@
 
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
-  <button id="sidebar-toggle">☰</button>
+  
   <aside class="sidebar" id="sidebar">
-    <div class="title">Crystal Meth</div>
+    <div class="title">Crystal Meth<span class="material-symbols-outlined" id="sidebar-toggle">menu</span></div>
 
     {% for page in site.data.nav %}
       <a href="{{page.link | relative_url}}">{{page.name}}</a>
