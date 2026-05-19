@@ -6,17 +6,17 @@ permalink: /10-sequences-and-series/
 # 10 Sequences and Series
 
 # Content
-1. [Sequences](#sequences)
+1. [Sequences](#1-sequences)
 
-    1.1.[Divergent & Convergent Sequences](#divergent-and-convergent-sequences)
+    1. [Divergent & Convergent Sequences](#11-divergent-and-convergent-sequences)
 
-    1.2.[Recurrence Relation](#recurrence-relation)
+    2. [Recurrence Relation](#12-recurrence-relation)
 
-2. [Series](#series)
+2. [Series](#2-series)
 
-    2.1.[Convergent Series](#convergent-series)
+    1. [Convergent Series](#21-convergent-series)
 
-# Sequences
+# 1 Sequences
 
 **Definition: Sequence**
 <div class=indented markdown=1>
@@ -40,13 +40,13 @@ In the context of making a *conjecture* for the general $r^{\text{th}}$ term of 
 
 </div>
 
-## Divergent and Convergent Sequences
+## 1.1 Divergent and Convergent Sequences
 
 **Definition: Divergent Sequences** 
 <div class=indented markdown=1>
 
 A *divergent sequence* is when the terms of an infinite sequence
-$$\left\{u_r\right\}, r \in \mathbb{Z}^+$$
+$$\lbrace u_r \rbrace, r \in \mathbb{Z}^+$$
 approaches infinity as r approaches infinity.
 
 </div>
@@ -55,7 +55,7 @@ approaches infinity as r approaches infinity.
 <div class=indented markdown=1>
 
 A *convergent sequence* is when the terms of an infinite sequence
-$$\left\{u_r\right\}, r \in \mathbb{Z}^+$$
+$$\\brace u_r \rbrace, r \in \mathbb{Z}^+$$
 approaches a real number $L$ as r approaches infinity.
 
 </div>
@@ -76,18 +76,18 @@ approaches a real number $L$ as r approaches infinity.
 > 3. $\displaystyle \lim_{n \to \infty}{u_n \times v_n} = \lim_{n \to \infty}{u_n} \times \lim_{n \to \infty}{v_n}$
 > 4. $\displaystyle \lim_{n \to \infty}{\left(\frac{u_n}{v_n}\right)} = \frac{\displaystyle \lim_{n \to \infty}{u_n}}{\displaystyle \lim_{n \to \infty}{v_n}}$, if $\displaystyle \lim_{n \to \infty}{v_n}$ and $v_1,v_2,v_3 \ldots$ are non-zero
 
-## Recurrence Relation
+## 1.2 Recurrence Relation
 
 **Definition**
 <div class=indented markdown=1>
 
  A *recurrence relation* is an identity that relates the general term $u_n$ in a sequence $u_1,u_2,\ldots,u_n,\ldots$ with a fixed number, say $k$ of its preceding terms.
- $$ u_n = f\left( u_{n-1},u_{n-2},\ldots,u_{n-k}\right)$$
+ $$u_n = f\left( u_{n-1},u_{n-2},\ldots,u_{n-k}\right)$$
  where $f$ is a function of $k$ variables. We say that $k$ is the *order* of the recurence relation.
 
 </div>
 
-# Series
+# 2 Series
 
 **Definition: Series**
 <div class=indented markdown=1>
@@ -99,7 +99,7 @@ $$u_1+u_2+u_3+\dots$$
 
 </div>
 
-## Convergent Series
+## 2.1 Convergent Series
 
 **Definition: Convergent Series**
 <div class=indented markdown=1>
