@@ -14,11 +14,13 @@ permalink: /12-complex-numbers/
 
 The *imaginary unit*, $i$, is defined by $i = \sqrt{-1}$. Equivalently, $i^2 = -1$.
 
+</div>
+
 # 2 Complex Numbers
 ## 2.1 Basics and Definitions
 
 | Set | Example|
-|-|-|
+|-----|--------|
 | Natural Numbers, $\mathbb{N}$ | $\lbrace 1,2,3,4,100\rbrace$|
 | Integers, $\mathbb{Z}$ | $\lbrace -5, -1, 0, 7 \rbrace$|
 | Rational Numbers, $\mathbb{Q}$ | $\lbrace \frac{1}{2},-\frac{3}{4},0.75,2\rbrace$|
@@ -28,7 +30,7 @@ The *imaginary unit*, $i$, is defined by $i = \sqrt{-1}$. Equivalently, $i^2 = -
 **Definition: Complex Number**
 <div class=indented markdown=1>
 
-A *complex number* is a number in the form $a+bi$ (*Cartesian form*), where $a$ and $b$ are real numbers. The set of all complex numbers, $\mathbb{C}, is given by
+A *complex number* is a number in the form $a+bi$ (*Cartesian form*), where $a$ and $b$ are real numbers. The set of all complex numbers, $\mathbb{C}$, is given by
 
 $$\mathbb{C} = \lbrace z=a+bi:a,b \in \mathbb{R} \rbrace$$
 
@@ -44,14 +46,14 @@ A *purely imaginary number* refers to any real multiple of $i$, i.e., $bi$, wher
 **Definition: Real and Imaginary Parts**
 <div class=indented markdown=1>
 
-For any complex number $a+bi$, where $a$ and $b$ are real, $a$ is the *real* part of $a + bi$, i.e., $a=Re(a+bi)$, and $b$ is the *imaginary part of $a+bi$, i.e., $b = Im(a+bi)$.   
+For any complex number $a+bi$, where $a$ and $b$ are real, $a$ is the *real* part of $a + bi$, i.e., $a=Re(a+bi)$, and $b$ is the *imaginary* part of $a+bi$, i.e., $b = Im(a+bi)$.   
 
 </div>
 
 **Definition: Complex Conjugates**
 <div class=indented markdown=1>
 
-For any complex number $z = a bi$, where $a$ and $b$ are real, its *complex conjugate*, $z^*$, is $a-bi$.
+For any complex number $z = a + bi$, where $a$ and $b$ are real, its *complex conjugate*, $z^*$, is $a-bi$.
 
 <center>
 <img src="{{'/assets/graphs/12N_graphical-representation-of-conjugates.svg' | relative_url}}" alt=""/>
@@ -87,13 +89,13 @@ Let $w = a +bi$ and $z = c + di$.
 >$$\begin{align*}
 >w \times z &= (a+bi) \times (c+di) \\
 >&= (a)(c) + (a)(di) + (c)(bi) + (bi)(di) \\
->&= (a)(c) + (a)(di) + (c)(bi) + (bd)(-1)
+>&= (a)(c) + (a)(di) + (c)(bi) + (bd)(-1) \\
 >&= (ac - bd) + (ad + cb)i
 >\end{align*}$$
 
 >**Division**
 >
->When dividing complex numbers in the form of $a + bi$, multiply both the numerator and the dominator by the complex conjugate of the denominator, in other words, realise the denominator.
+>When dividing complex numbers in the form of $a + bi$, multiply both the numerator and the dominator by the complex conjugate of the denominator; in other words, realise the denominator.
 >
 >$$\begin{align*}
 >w \div z &= \frac{w}{z} \\
@@ -154,14 +156,14 @@ When used in this way to represent complex numbers, the coordinate plane is call
 >
 >In an Argand diagram, the points representing any complex number $z$ and its complex conjugate $z^*$ are **reflections** of each other in the **real axis**
 
-**Definition: Modulus and Argument** {#definition-modulus-and-argument}
+**Definition: Modulus and Argument** <a id="definition-modulus-and-argument"></a>
 <div class=indented markdown=1>
 
 For any complex number $z=x+yi$, where $x,y \in \mathbb{R}$,
 
-- the *modulus* of $z$, denote by $|z|$, is the distance between the point $P(x,y)$ and the origin $O$.
+- the *modulus* of $z$, denoted by $\|z\|$, is the distance between the point $P(x,y)$ and the origin $O$.
 
-- the *argument* of $z$, denoted by $arg(z)$, is the angle (usually measured **radians**) between the **positive** real-axis and the $(x,y)$ and the line segment $OP$.
+- the *argument* of $z$, denoted by $arg(z)$, is the angle (usually measured in **radians**) between the **positive** real-axis and the line segment $OP$.
 
 
 </div>
@@ -172,7 +174,7 @@ For any complex number $z=x+yi$, where $x,y \in \mathbb{R}$,
 
 Apply Pythagoras' Theorem to obtain the modulus of a complex number z,
 
-$$|z| = r = \sqrt{x^2+y^2}$$
+$$ |z| = r = \sqrt{x^2+y^2} $$
 
 *Argument*
 
@@ -181,16 +183,12 @@ $$\alpha = \tan^{-1}{\left( \frac{|y|}{|x|} \right)}$$
 
 2. Find the value $\theta$ based on the quandrant that it lies in. With reference to the definition provided [above](#definition-modulus-and-argument), we can obtain the following table
 
-<center>
-
-|Quadrant| Range| Value of $\theta$|
-|-|-|-|
-| $1^\text{st}$ Quadrant|$0 \lt \theta \lt \frac{\pi}{2}$ | $\theta = \alpha$|
-| $2^\text{nd}$ Quadrant| $\frac{\pi}{2} \lt \theta \lt \pi$ | $\theta = \pi - \alpha$|
-|$3^\text{rd}$ Quadrant| $\pi \lt \theta \lt \frac{3\pi}{2}$| $\theta = -(\pi - \alpha)$
-|$4^{\text{th}}$ Quadrant| $\frac{3\pi}{2} \lt \theta \lt 2\pi$| $\theta = -\alpha$
-
-</center>
+| Quadrant              | Range                                | Value of $\theta$          |
+|-----------------------|--------------------------------------|----------------------------|
+| $1^\text{st}$ Quadrant| $0 \lt \theta   \lt \frac{\pi}{2}$   | $\theta = \alpha$          |
+| $2^\text{nd}$ Quadrant| $\frac{\pi}{2}  \lt \theta \lt \pi$  | $\theta = \pi - \alpha$    |
+| $3^\text{rd}$ Quadrant| $\pi \lt \theta \lt \frac{3\pi}{2}$  | $\theta = -(\pi - \alpha)$ |
+| $4^\text{th}$ Quadrant| $\frac{3\pi}{2} \lt \theta \lt 2\pi$ | $\theta = -\alpha$         |
 
 > **Note**
 >
@@ -222,8 +220,9 @@ Addition and subtraction of complex numbers correspond to the parallelogram law 
 > By the parallelogram law of vector addition,
 > $$\overrightarrow{OP_3} = \overrightarrow{OP_1} + \overrightarrow{OP_2}$$
 
-<details markdown=1>
-<summary markdown=1> **Proof**</summary> 
+<details markdown=1> 
+<summary markdown=1> **Proof** 
+</summary> 
 
 $$
  \begin{align*}
@@ -250,8 +249,9 @@ z_1 + z_2 &= (x_1 + iy_1) + (x_2+iy_2) \\
 > $$\begin{align*}\overrightarrow{OP_3} &= \overrightarrow{OP_2} - \overrightarrow{OP_1} \\ &= \overrightarrow{P_1P_2}\end{align*}$$
 
 <details markdown=1>
-<summary markdown=1> **Proof**</summary> 
-
+<summary markdown=1> 
+**Proof** 
+</summary> 
 $$
  \begin{align*}
 \\
@@ -267,7 +267,7 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 
 > **Deductions**
 >
-> - $\begin{array}{l c}P_1P_2 &=& \left| \overrightarrow{p_1P_2} \right| \\ &=& \left| z_2 - z_1 \right|\end{array}$
+> - $\begin{array}{l c}P_1P_2 &=& \left\| \overrightarrow{p_1P_2} \right\| \\ &=& \left\| z_2 - z_1 \right\|\end{array}$
 >
 > - $arg(z_2 - z_1)$ is the angle between $P_1P_2$ and the **positive real direction**, equivalently, the positive x-axis.
 
@@ -277,16 +277,16 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 >
 >Let $z_1$ be a complex numbers represented by $P_1$ in the Argand Diagram.
 >
->If $z_1^*$ is represented by $P_2$, then $P_1$ and $P_2$ are reflections of each other in the real axis *(x-axis)*.
+>If $z_1^\*$ is represented by $P_2$, then $P_1$ and $P_2$ are reflections of each other in the real axis *(x-axis)*.
 >
 >If $-z_1$ is represented by $P_3$, then $P_1$ and $P_3$ are reflections of each other about the origin.
 >
->Consequently, $(-z_1)^*$ and $-(z_1^*)$ are represented by the same point.
+>Consequently, $(-z_1)^\*$ and $-(z_1^\*)$ are represented by the same point.
 
 >**Result: Geometrical Effects of Multiplication by i**
 >
 >Let $z_1$ be a complex number represented by $P_1$ in the Argand diagram.
 >
->If $iz_1$ is represented by $P_2$, then $P_2$ is obtained by rotating $P_1$ $90\degree$ anti-clockwise about the origin.
+>If $iz_1$ is represented by $P_2$, then $P_2$ is obtained by rotating $P_1$ $90^\circ$ anti-clockwise about the origin.
 >
 >#TODO: DIAGRAM
