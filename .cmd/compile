@@ -44,7 +44,7 @@ cd "$workdir"
 
 echo "Building in: $workdir"
 
-latexmk -pdf "\def\darkmodeexport{1} \input{${base}.tex}"
+latexmk -pdf -e '$darkmodeexport=1' "${base}.tex"
 
 rm -f *.aux *.log *.fls *.fdb_latexmk *.synctex.gz *.out *.toc *.bbl *.blg || true
 
