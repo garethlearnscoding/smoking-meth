@@ -1,22 +1,61 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+chapter=""
+file=""
 
-file="$1"
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -c|--chapter)
+            chapter="$2"
+            shift 2
+            ;;
+        -f|--filename)
+            file="$2"
+            shift 2
+            ;;
+        *)
+            echo "Usage: build -c <chapter> -f <filename>"
+            exit 1
+            ;;
+    esac
+done
 
-if [ -z "$file" ]; then
-    echo "Usage: build <file-without-extension>"
+if [[ -z "$chapter" || -z "$file" ]]; then
+    echo "Usage: build -c <chapter> -f <filename>"
     exit 1
 fi
 
-if [ ! -f "${file}.tex" ]; then
-    echo "Error: ${file}.tex not found"
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+
+cd "$repo_root"
+
+tex_path="tex/$chapter/$file.tex"
+
+if [[ ! -f "$tex_path" ]]; then
+    echo "Error: $tex_path not found"
     exit 1
 fi
 
-latexmk -pdf "${file}.tex"
+workdir="$(dirname "$tex_path")"
+base="$(basename "$file")"
 
-inkscape "${file}.pdf" \
+cd "$workdir"
+
+echo "Building in: $workdir"
+
+latexmk -pdf "$base.tex"
+
+rm -f *.aux *.log *.fls *.fdb_latexmk *.synctex.gz *.out *.toc *.bbl *.blg || true
+
+pdf="$base.pdf"
+svg="$base.svg"
+
+[[ -f "$pdf" ]] || { echo "PDF missing"; exit 1; }
+
+inkscape "$pdf" \
   --export-type=svg \
-  --export-filename="${file}.svg" \
+  --export-filename="$svg" \
   --export-background-opacity=0
+
+echo "Done: $pdf + $svg"
