@@ -1,0 +1,67 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor}
+\usetikzlibrary{calc}
+
+\ifdefined\exportmode
+  % no background
+  \color{white}
+\else
+  \pagecolor{black}
+  \color{white}
+\fi
+
+\tikzset{
+    axis/.style={white,->},
+    guide/.style={white,dashed},
+    point/.style={fill=white,draw=white},
+    label/.style={text=white},
+    vector/.style={white,thick,->,shorten >= 2.5}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2.5]
+
+% background (draw FIRST)
+\def\xmin{-0.5}
+\def\xmax{3}
+\def\ymin{-1}
+\def\ymax{3}
+
+\fill[opacity=0] ($(\xmin-0.5,\ymin-0.5)$) rectangle ($(\xmax+0.5,\ymax+0.5)$);
+
+% axes
+\draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$\mathrm{Re}$};
+\draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$\mathrm{Im}$};
+
+% Origin
+\node[label,below left] at (0,0) {$O$};
+
+  % Points
+  \coordinate (O) at (0, 0);
+  \coordinate (P1) at (1.2, -.6);      % z₁ on real axis
+  \coordinate (P2) at (2.2, 2);      % z₂ on imaginary axis
+  \coordinate (P3) at (1, 2.6);      % z₁ + z₂
+  
+  % Points on diagram
+  \draw[point] (P1) circle (0.035);
+  \draw[point] (P2) circle (0.035);
+  \draw[point] (P3) circle (0.035);
+  
+  % Labels for points
+  \node[label,below right] at (P1) {$P_1$};
+  \node[label,right=1.5mm] at (P2) {$P_2$};
+  \node[label,above=0.5mm] at (P3) {$P_3$};
+  
+  % Solid lines (vectors)
+  \draw[vector] (O) -- (P1) node[midway, above] {$z_1$};
+  \draw[vector] (O) -- (P2) node[midway, right=1mm,below=2.5mm] {$z_2$};
+  \draw[vector] (O) -- (P3) node[midway, above=5mm, left] {$z_1 + z_2$};
+  
+  % Parallelogram sides (dashed)
+  \draw[guide] (P1) -- (P2);
+  \draw[guide] (P2) -- (P3);
+
+\end{tikzpicture}
+
+\end{document}

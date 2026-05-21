@@ -4,6 +4,7 @@
 
 \ifdefined\exportmode
   % no background
+  \color{white}
 \else
   \pagecolor{black}
   \color{white}
@@ -13,7 +14,9 @@
     axis/.style={white,->},
     guide/.style={white,dashed},
     point/.style={fill=white,draw=white},
-    label/.style={text=white}
+    label/.style={text=white},
+    angle/.style={draw=white},
+    vector/.style={white,thick,->,shorten >= 2.5}
 }
 
 \begin{document}

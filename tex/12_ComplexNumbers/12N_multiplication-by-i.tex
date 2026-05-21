@@ -1,0 +1,82 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor}
+\usetikzlibrary{calc}
+
+\ifdefined\exportmode
+  % no background
+  \color{white}
+\else
+  \pagecolor{black}
+  \color{white}
+\fi
+
+\tikzset{
+    axis/.style={white,->},
+    guide/.style={white,dashed},
+    point/.style={fill=white,draw=white},
+    label/.style={text=white},
+    angle/.style={draw=white},
+    vector/.style={white,thick,->,shorten >= 2.5},
+    dottedguide/.style={white,dotted,thick}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2.5]
+
+% background (draw FIRST)
+\def\xmin{-2.5}
+\def\xmax{2.5}
+\def\ymin{-2.5}
+\def\ymax{2.5}
+
+\fill[opacity=0] ($(\xmin-0.5,\ymin-0.5)$) rectangle ($(\xmax+0.5,\ymax+0.5)$);
+
+% axes
+\draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$\mathrm{Re}$};
+\draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$\mathrm{Im}$};
+
+% Origin
+\node[label,below left] at (0,0) {$O$};
+\coordinate(o) at (0,0);
+
+% Define points
+\coordinate (z1) at (2, 1);        % z = 2 + 1i
+\coordinate (z2) at (-1, 2);       % iz = -1 + 2i
+\coordinate (z3) at (-2, -1);      % i²z = -2 - 1i
+\coordinate (z4) at (1, -2);       % i³z = 1 - 2i
+
+% Points
+\draw[point] (z1) circle (0.035);
+\draw[point] (z2) circle (0.035);
+\draw[point] (z3) circle (0.035);
+\draw[point] (z4) circle (0.035);
+
+% Dashed guides connecting points
+\draw[guide] (z1) -- (o);
+\draw[guide] (z2) -- (o);
+\draw[guide] (z3) -- (o);
+\draw[guide] (z4) -- (o);
+
+% Dotted lines to axes
+\draw[dottedguide] (z1) -- (2, 0);
+\draw[dottedguide] (z1) -- (0, 1);
+\draw[dottedguide] (z2) -- (-1, 0);
+\draw[dottedguide] (z2) -- (0, 2);
+\draw[dottedguide] (z3) -- (-2, 0);
+\draw[dottedguide] (z3) -- (0, -1);
+\draw[dottedguide] (z4) -- (1, 0);
+\draw[dottedguide] (z4) -- (0, -2);
+
+% Labels
+\node[label,above=0.5mm] at (z1) {$z = 2 + 1i$};
+\node[label,above=0.5mm] at (z2) {$iz = -1 + 2i$};
+\node[label,below=0.5mm] at (z3) {$i^2z = -2 - 1i$};
+\node[label,below=4mm, right=-3mm] at (z4) {$i^3z = 1 - 2i$};
+
+% Right angle
+\draw[angle,thick] (-0.05, 0.1) -- (0.05,0.15) -- (0.1, 0.05);
+
+\end{tikzpicture}
+
+\end{document}
