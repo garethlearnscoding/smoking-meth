@@ -1,16 +1,13 @@
 \documentclass[tikz]{standalone}
 \usepackage{xcolor}
-\newif\ifdarkmode
 
-\ifdefined\darkmodeexport
-  \darkmodefalse
+\ifdefined\exportmode
+  % no background
 \else
-  \darkmodetrue
-\fi
-\ifdarkmode
   \pagecolor{black}
   \color{white}
 \fi
+
 \begin{document}
 
 \begin{tikzpicture}[scale=2.5]
