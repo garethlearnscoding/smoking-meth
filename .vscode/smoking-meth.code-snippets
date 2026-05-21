@@ -40,10 +40,15 @@
 		],
 		"description": "Insert boiler plate code for definition block"
 	},
-	"inline math":{
+	"image":{
 		"scope":"markdown",
-		"prefix":"inlm",
-		"body":["$$1$"],
-		"description": "Insert inline math boiler plate markers"
+		"prefix":"graphimg",
+		"body":[
+			"<center>",
+			"<img src=\"{{'/assets/graphs/$1'|relative_url}}\" alt=''/>",
+			"</center>",
+			"$0"
+		],
+		"description": "Insert boiler plate code for svg graph insertion"
 	}
 }
