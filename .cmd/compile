@@ -3,12 +3,14 @@ set -euo pipefail
 
 chapter=""
 file=""
+copy=false
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
         -c|--chapter) chapter="$2"; shift 2 ;;
         -f|--filename) file="$2"; shift 2 ;;
-        *) echo "Usage: build [-c <chapter>] [-f <filename>]"; exit 1 ;;
+        --copy) copy=true; shift ;;
+        *) echo "Usage: build [-c <chapter>] [-f <filename>] [--copy]"; exit 1 ;;
     esac
 done
 
@@ -16,7 +18,7 @@ repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
 cd "$repo_root"
 
 if [[ -z "$chapter" ]]; then
-    chapter=$(find tex -mindepth 1 -maxdepth 1 -type d | sed 's|tex/||' \
+    chapter=$(find tex -mindepth 1 -maxdepth 1 -type d -not -name "build" | sed 's|tex/||' \
         | fzf --prompt='  ' \
               --border-label=' chapter ' \
               --color=bg:-1 \
@@ -24,7 +26,7 @@ if [[ -z "$chapter" ]]; then
 fi
 
 if [[ -z "$file" ]]; then
-    file=$(find "tex/$chapter" -maxdepth 1 -name "*.tex" | sed "s|tex/$chapter/||; s|\.tex$||" \
+    file=$(find "tex/$chapter" -maxdepth 1 -name "*.tex" -not -path "*/build/*" | sed "s|tex/$chapter/||; s|\.tex$||" \
         | fzf --prompt='  ' \
               --border-label=' file ' \
               --color=bg:-1 \
@@ -70,5 +72,38 @@ rm -f "$base.pdf"
 section "output"
 info "tex/$chapter/svg/$base.svg"
 
-section "Output"
-info "$base.svg"
+# --- Copy ---
+if [[ "$copy" == false ]]; then
+    printf "\n[build] copy svg to assets? [y/N] "
+    read -r answer
+    [[ "$answer" =~ ^[Yy]$ ]] && copy=true
+fi
+
+if [[ "$copy" == true ]]; then
+    section "copy"
+    assets_dir="$repo_root/assets/graphs"
+
+    if [[ -d "$assets_dir/$chapter" ]]; then
+        dest="$assets_dir/$chapter"
+        info "found assets/$chapter"
+    else
+        info "assets/$chapter not found, select destination:"
+        dest=$(
+            { echo "+ create assets/$chapter"; find "$assets_dir" -mindepth 1 -maxdepth 1 -type d | sed "s|$assets_dir/||"; } \
+            | fzf --prompt='  ' \
+                --border-label=' assets folder ' \
+                --color=bg:-1 \
+                --height=~40%) || { echo "No folder selected."; exit 1; }
+
+        if [[ "$dest" == "+ create assets/$chapter" ]]; then
+            mkdir -p "$assets_dir/$chapter"
+            dest="$assets_dir/$chapter"
+            info "created assets/$chapter"
+        else
+            dest="$assets_dir/$dest"
+        fi
+    fi
+
+    cp "$svg_dir/$base.svg" "$dest/$base.svg"
+    info "copied to ${dest#$repo_root/}/$base.svg"
+fi
