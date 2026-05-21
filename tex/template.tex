@@ -1,0 +1,48 @@
+\documentclass[tikz]{standalone}
+\usepackage{xcolor}
+\usetikzlibrary{calc}
+
+\ifdefined\exportmode
+  % no background
+\else
+  \pagecolor{black}
+  \color{white}
+\fi
+
+\tikzset{
+    axis/.style={white,->},
+    guide/.style={white,dashed},
+    point/.style={fill=white,draw=white},
+    label/.style={text=white}
+}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2.5]
+
+% background (draw FIRST)
+\def\xmin{}
+\def\xmax{}
+\def\ymin{}
+\def\ymax{}
+
+\fill[opacity=0] ($(\xmin-0.5,\ymin-0.5)$) rectangle ($(\xmax+0.5,\ymax+0.5)$);
+
+% axes
+\draw[axis] (\xmin, 0) -- (\xmax, 0) node[right] {$x$};
+\draw[axis] (0,\ymin) -- (0,\ymax) node[above] {$y$};
+
+% Origin
+\node[label,below left] at (0,0) {$O$};
+
+% Points - \draw[point] (z) circle (0.035);
+
+% Dashed guides - 
+%\draw[white,dashed] (z) -- (2,0);
+%\draw[white,dashed] (0,1.5) -- (z);
+
+% labels - \node[label,POSITION] at (x,y) {$LABEL$};
+
+\end{tikzpicture}
+
+\end{document}
