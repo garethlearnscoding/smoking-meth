@@ -6,56 +6,69 @@ file=""
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        -c|--chapter)
-            chapter="$2"
-            shift 2
-            ;;
-        -f|--filename)
-            file="$2"
-            shift 2
-            ;;
-        *)
-            echo "Usage: build -c <chapter> -f <filename>"
-            exit 1
-            ;;
+        -c|--chapter) chapter="$2"; shift 2 ;;
+        -f|--filename) file="$2"; shift 2 ;;
+        *) echo "Usage: build [-c <chapter>] [-f <filename>]"; exit 1 ;;
     esac
 done
 
-if [[ -z "$chapter" || -z "$file" ]]; then
-    echo "Usage: build -c <chapter> -f <filename>"
-    exit 1
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+cd "$repo_root"
+
+if [[ -z "$chapter" ]]; then
+    chapter=$(find tex -mindepth 1 -maxdepth 1 -type d | sed 's|tex/||' \
+        | fzf --prompt='  ' \
+              --border-label=' chapter ' \
+              --color=bg:-1 \
+              --height=~40%) || { echo "No chapter selected."; exit 1; }
 fi
 
-repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
-
-cd "$repo_root"
+if [[ -z "$file" ]]; then
+    file=$(find "tex/$chapter" -maxdepth 1 -name "*.tex" | sed "s|tex/$chapter/||; s|\.tex$||" \
+        | fzf --prompt='  ' \
+              --border-label=' file ' \
+              --color=bg:-1 \
+              --height=~40%) || { echo "No file selected."; exit 1; }
+fi
 
 tex_path="tex/$chapter/$file.tex"
 
-if [[ ! -f "$tex_path" ]]; then
-    echo "Error: $tex_path not found"
-    exit 1
-fi
+[[ -f "$tex_path" ]] || { echo "Error: $tex_path not found"; exit 1; }
 
 workdir="$(dirname "$tex_path")"
 base="$(basename "$file")"
 
 cd "$workdir"
 
-echo "Building in: $workdir"
+info()    { echo "[build] $*"; }
+section() { echo "" && echo "[build] --- $* ---"; }
 
-latexmk -pdf -e '$darkmodeexport=1' "${base}.tex"
+section "latexmk: $tex_path"
+latexmk -pdf -silent \
+    -usepretex -pretex="\def\exportmode{1}" \
+    "${base}.tex" > /dev/null 2>&1 && info "converted to pdf" || {
+    echo "[build] failed"
+    exit 1
+}
 
+info "cleaning aux files"
 rm -f *.aux *.log *.fls *.fdb_latexmk *.synctex.gz *.out *.toc *.bbl *.blg || true
 
-pdf="$base.pdf"
-svg="$base.svg"
+svg_dir="$repo_root/tex/$chapter/svg"
+mkdir -p "$svg_dir"
 
-[[ -f "$pdf" ]] || { echo "PDF missing"; exit 1; }
+section "inkscape: $base.svg"
+inkscape "$base.pdf" \
+    --export-type=svg \
+    --export-filename="$svg_dir/$base.svg" \
+    --export-background-opacity=0 > /dev/null 2>&1 && info "converted to svg" || {
+    echo "[build] failed"
+    exit 1
+}
+rm -f "$base.pdf"
 
-inkscape "$pdf" \
-  --export-type=svg \
-  --export-filename="$svg" \
-  --export-background-opacity=0
+section "output"
+info "tex/$chapter/svg/$base.svg"
 
-echo "Done: $pdf + $svg"
+section "Output"
+info "$base.svg"

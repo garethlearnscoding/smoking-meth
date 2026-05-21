@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+chapter=""
+file=""
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -c|--chapter) chapter="$2"; shift 2 ;;
+        -f|--filename) file="$2"; shift 2 ;;
+        *) echo "Usage: new [-c <chapter>] [-f <filename>]"; exit 1 ;;
+    esac
+done
+
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+cd "$repo_root"
+
+template="tex/template.tex"
+[[ -f "$template" ]] || { echo "Error: $template not found"; exit 1; }
+
+info()    { echo "[new] $*"; }
+section() { echo "" && echo "[new] --- $* ---"; }
+
+# --- Chapter: pick existing or create new ---
+if [[ -z "$chapter" ]]; then
+    section "chapter"
+    chapter=$(
+        { echo "+ create new folder"; find tex -mindepth 1 -maxdepth 1 -type d | sed 's|tex/||'; } \
+        | fzf --prompt='  ' \
+              --border-label=' chapter ' \
+              --color=bg:-1 \
+              --height=~40%
+    ) || { echo "No chapter selected."; exit 1; }
+
+    if [[ "$chapter" == "+ create new folder" ]]; then
+        printf "[new] folder name: "
+        read -r chapter
+        mkdir -p "tex/$chapter"
+        info "created  tex/$chapter"
+    else
+        info "folder  tex/$chapter"
+    fi
+fi
+
+# --- Filename ---
+if [[ -z "$file" ]]; then
+    section "filename"
+    printf "[new] filename (no extension): "
+    read -r file
+fi
+
+dest="tex/$chapter/$file.tex"
+
+[[ ! -f "$dest" ]] || { echo "Error: $dest already exists"; exit 1; }
+
+cp "$template" "$dest"
+
+section "done"
+info "tex/$chapter/$file.tex"

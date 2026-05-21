@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root=$(git rev-parse --show-toplevel 2>/dev/null || pwd)
+pkg="$repo_root/package.json"
+
+[[ -f "$pkg" ]] || { echo "Error: no package.json at $repo_root"; exit 1; }
+
+# No script name given — fzf over all scripts
+if [[ $# -eq 0 ]]; then
+    script=$(jq -r '.scripts | to_entries[] | "\(.key)  \(.value)"' "$pkg" \
+        | fzf --prompt='  ' \
+              --border-label=' scripts ' \
+              --with-nth=1 \
+              --delimiter='  ' \
+              --color=bg:-1\
+        | awk '{print $1}') || { echo "No script selected."; exit 1; }
+else
+    script="$1"
+    shift
+fi
+
+cmd=$(jq -r --arg s "$script" '.scripts[$s] // empty' "$pkg")
+[[ -n "$cmd" ]] || { echo "Error: script '$script' not found in package.json"; exit 1; }
+
+echo "script  $script"
+echo "command  $cmd"
+echo ""
+
+cd "$repo_root"
+eval "$cmd" "$@"

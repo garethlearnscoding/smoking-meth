@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "scripts": {
+    "compile": "bash .cmd/compile",
+    "new":"bash .cmd/new"
+  }
+}
