@@ -25,7 +25,7 @@ section() { echo "" && echo "[new] --- $* ---"; }
 if [[ -z "$chapter" ]]; then
     section "chapter"
     chapter=$(
-        { echo "+ create new folder"; find tex -mindepth 1 -maxdepth 1 -type d | sed 's|tex/||'; } \
+        { echo "+ create new folder"; find tex -mindepth 1 -maxdepth 1 -type d -not -name "build"| sed 's|tex/||'; } \
         | fzf --prompt='  ' \
               --border-label=' chapter ' \
               --color=bg:-1 \
