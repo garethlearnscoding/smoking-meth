@@ -67,7 +67,7 @@ For any complex number $a+bi$, where $a$ and $b$ are real, $a$ is the *real* par
 For any complex number $z = a + bi$, where $a$ and $b$ are real, its *complex conjugate*, $z^*$, is $a-bi$.
 
 <center>
-<img src="{{'/assets/graphs/12N_graphical-representation-of-conjugates.svg' | relative_url}}" alt=""/>
+<img src="{{'/assets/graphs/12_ComplexNumbers/12N_conjugates.svg' | relative_url}}" alt=""/>
 </center>
 </div>
 
@@ -166,6 +166,9 @@ When used in this way to represent complex numbers, the coordinate plane is call
 >**Significance of Conjugates**
 >
 >In an Argand diagram, the points representing any complex number $z$ and its complex conjugate $z^*$ are **reflections** of each other in the **real axis**
+> <center>
+> <img src="{{'/assets/graphs/12_ComplexNumbers/12N_modulus.svg' | relative_url}}" alt=""/>
+> </center>
 
 **Definition: Modulus and Argument** <a id="definition-modulus-and-argument"></a>
 <div class=indented markdown=1>
@@ -226,13 +229,16 @@ Addition and subtraction of complex numbers correspond to the parallelogram law 
 >
 > Let $z_1$ and $z_2$ be two distinct complex numbers. The points $P_1$,$P_2$ and $P_3$, representing $z_1$, $z_2$ and $z_1+ z_2$ respectively in the Argand diagram, form a parallelogram $OP_1P_3P_2$.
 >
-> #TODO: DIAGRAM
+> <center>
+> <img src="{{'/assets/graphs/12_ComplexNumbers/12N_addition.svg'|relative_url}}" alt=''/>
+> </center>
 >
 > By the parallelogram law of vector addition,
 > $$\overrightarrow{OP_3} = \overrightarrow{OP_1} + \overrightarrow{OP_2}$$
 
 <details markdown=1> 
-<summary markdown=1> **Proof** 
+<summary>
+<strong>Proof</strong>
 </summary> 
 
 $$
@@ -253,15 +259,19 @@ z_1 + z_2 &= (x_1 + iy_1) + (x_2+iy_2) \\
 > 
 > Let $z_1$ and $z_2$ be two distinct complex numbers. The points $P_1$,$P_2$ and $P_3$, representing $z_1$, $z_2$ and $z_1 - z_2$ respectively in the Argand diagram, form a parallelogram $OP_1P_3P_2$.
 > 
-> #TODO: DIAGRAM
+> <center>
+> <img src="{{'/assets/graphs/12_ComplexNumbers/12N_subtraction.svg'|relative_url}}" alt=''/>
+> </center>
 > 
 > By the parallelogrm law of vector addition,
 > 
 > $$\begin{align*}\overrightarrow{OP_3} &= \overrightarrow{OP_2} - \overrightarrow{OP_1} \\ &= \overrightarrow{P_1P_2}\end{align*}$$
 
 <details markdown=1>
-<summary markdown=1> 
-<strong>Proof</strong>
+<summary> 
+<strong>
+Proof
+</strong>
 </summary> 
 $$
  \begin{align*}
@@ -278,7 +288,7 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 
 > **Deductions**
 >
-> - $\begin{array}{l c}P_1P_2 &=& \left\| \overrightarrow{p_1P_2} \right\| \\ &=& \left\| z_2 - z_1 \right\|\end{array}$
+> - $\begin{array}{l c}P_1P_2 &=& \left| \overrightarrow{p_1P_2} \right| \\ &=& \left\| z_2 - z_1 \right\|\end{array}$
 >
 > - $arg(z_2 - z_1)$ is the angle between $P_1P_2$ and the **positive real direction**, equivalently, the positive x-axis.
 
@@ -288,7 +298,7 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 >
 >Let $z_1$ be a complex numbers represented by $P_1$ in the Argand Diagram.
 >
->If $z_1^\*$ is represented by $P_2$, then $P_1$ and $P_2$ are reflections of each other in the real axis *(x-axis)*.
+> If $z_1^\*$ is represented by $P_2$, then $P_1$ and $P_2$ are reflections of each other in the real axis *(x-axis)*.
 >
 >If $-z_1$ is represented by $P_3$, then $P_1$ and $P_3$ are reflections of each other about the origin.
 >
@@ -300,4 +310,6 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 >
 >If $iz_1$ is represented by $P_2$, then $P_2$ is obtained by rotating $P_1$ $90^\circ$ anti-clockwise about the origin.
 >
->#TODO: DIAGRAM
+> <center>
+> <img src="{{'/assets/graphs/12N_ComplexNumbers/12N_multiplication-by-i.svg'|relative_url}}" alt=''/>
+> </center>
