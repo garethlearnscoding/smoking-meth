@@ -5,19 +5,23 @@ permalink: /12-complex-numbers/
 ---
 # 12 Complex Numbers
 
-# Content
-1. 
+# Contents
+1. [Basics and definitions](#1-basics-and-definitions)
 
-# 1 Complex Roots of Quadratic Equations
-**Definition: Imaginary Unit**
-<div class=indented markdown=1>
+2. [Basic Operations on Complex Numbers](#2-basic-operations-on-complex-numbers)
 
-The *imaginary unit*, $i$, is defined by $i = \sqrt{-1}$. Equivalently, $i^2 = -1$.
+3. [Theories](#3-theories)
 
-</div>
+4. [Argand Diagram](#4-argand-diagram)
 
-# 2 Complex Numbers
-## 2.1 Basics and Definitions
+5. [Geometric Effect of Arithmetic Operations on Complex Numbers](#5-geometric-effect-of-arithmetic-operations-on-complex-numbers)
+
+    1. [Geometric Effect of Addition and Subtraction](#51-geometric-effect-of-addition-and-subtraction)
+
+    2. [Geometrical Effect of Conjugation, Negation and Multiplication by i](#52-geometrical-effect-of-conjugation-negation-and-multiplication-by-i)
+
+
+# 1 Basics and Definitions
 
 | Set | Example|
 |-----|--------|
@@ -26,6 +30,13 @@ The *imaginary unit*, $i$, is defined by $i = \sqrt{-1}$. Equivalently, $i^2 = -
 | Rational Numbers, $\mathbb{Q}$ | $\lbrace \frac{1}{2},-\frac{3}{4},0.75,2\rbrace$|
 | Real Numbers, $\mathbb{R}$ | $\lbrace \sqrt{2},\pi,e,-\sqrt{5} \rbrace$|
 | Complex Numbers, $\mathbb{C}$ | $\lbrace 2+3i, -i,1-\sqrt{2i}\rbrace$|
+
+**Definition: Imaginary Unit**
+<div class=indented markdown=1>
+
+The *imaginary unit*, $i$, is defined by $i = \sqrt{-1}$. Equivalently, $i^2 = -1$.
+
+</div>
 
 **Definition: Complex Number**
 <div class=indented markdown=1>
@@ -71,7 +82,7 @@ if $a$,$b$,$c$ and $d$ are real.
 
 </div>
 
-## 2.2 Basic Operations on Complex Numbers
+# 2 Basic Operations on Complex Numbers
 
 Let $w = a +bi$ and $z = c + di$.
 
@@ -105,7 +116,7 @@ Let $w = a +bi$ and $z = c + di$.
 >& \qquad \qquad \vdots
 >\end{align*}$$
 
-## 2.3 Theories
+# 3 Theories
 
 >**Conjugate Root Theorem**
 >
@@ -133,7 +144,7 @@ Let $w = a +bi$ and $z = c + di$.
 >
 ></center>
 
-## 2.3 Argand Diagram
+# 4 Argand Diagram
 
 **Definition: Argand Diagram**
 <div class=indented markdown=1>
@@ -205,9 +216,9 @@ $$\alpha = \tan^{-1}{\left( \frac{|y|}{|x|} \right)}$$
 >
 >regardless of which quadrant the point $P(x,y)$ lies in.
 
-## 2.4 Geometric Effect of Arithmetic Operations on Complex Numbers
+# 5 Geometric Effect of Arithmetic Operations on Complex Numbers
 
-### 2.4.1 Geometric Effect of Addition and Subtraction
+## 5.1 Geometric Effect of Addition and Subtraction
 
 Addition and subtraction of complex numbers correspond to the parallelogram law of vector addition and subtraction.
 
@@ -250,7 +261,7 @@ z_1 + z_2 &= (x_1 + iy_1) + (x_2+iy_2) \\
 
 <details markdown=1>
 <summary markdown=1> 
-**Proof** 
+<strong>Proof</strong>
 </summary> 
 $$
  \begin{align*}
@@ -271,7 +282,7 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 >
 > - $arg(z_2 - z_1)$ is the angle between $P_1P_2$ and the **positive real direction**, equivalently, the positive x-axis.
 
-### 2.4.2 Geometrical Effect of Conjugation, Negation and Multiplication by i
+## 5.2 Geometrical Effect of Conjugation, Negation and Multiplication by i
 
 >**Result: Geometrical Effects of Conjugation and Negation**
 >
