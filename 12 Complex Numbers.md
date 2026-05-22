@@ -110,7 +110,7 @@ Let $w = a +bi$ and $z = c + di$.
 >
 >$$\begin{align*}
 >w \div z &= \frac{w}{z} \\
->&= \frac{w}{z} \times \frac{z^*}{z^*} \\
+>&= \frac{w}{z} \times \frac{z^\ast}{z^\ast} \\
 >&= \frac{a+bi}{c+di} \times \frac{c-di}{c-di} \\
 >&= \frac{(a+bi)(c-di)}{c^2 - (di)^2} \\
 >& \qquad \qquad \vdots
@@ -165,7 +165,7 @@ When used in this way to represent complex numbers, the coordinate plane is call
 
 >**Significance of Conjugates**
 >
->In an Argand diagram, the points representing any complex number $z$ and its complex conjugate $z^*$ are **reflections** of each other in the **real axis**
+>In an Argand diagram, the points representing any complex number $z$ and its complex conjugate $z^\ast$ are **reflections** of each other in the **real axis**
 > <center>
 > <img src="{{'/assets/graphs/12_ComplexNumbers/12N_modulus.svg' | relative_url}}" alt=""/>
 > </center>
@@ -298,17 +298,17 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 >
 >Let $z_1$ be a complex numbers represented by $P_1$ in the Argand Diagram.
 >
-> If $z_1^\*$ is represented by $P_2$, then $P_1$ and $P_2$ are reflections of each other in the real axis *(x-axis)*.
+> If $z_1^{\ast}$ is represented by $P_2$, then $P_1$ and $P_2$ are reflections of each other in the real axis *(x-axis)*.
 >
 >If $-z_1$ is represented by $P_3$, then $P_1$ and $P_3$ are reflections of each other about the origin.
 >
->Consequently, $(-z_1)^\*$ and $-(z_1^\*)$ are represented by the same point.
+>Consequently, $(-z_1)^\ast$ and $-(z_1^\ast)$ are represented by the same point.
 
 >**Result: Geometrical Effects of Multiplication by i**
 >
 >Let $z_1$ be a complex number represented by $P_1$ in the Argand diagram.
 >
->If $iz_1$ is represented by $P_2$, then $P_2$ is obtained by rotating $P_1$ $90^\circ$ anti-clockwise about the origin.
+>If $iz_1$ is represented by $P_2$, then $P_2$ is obtained by rotating $P_1$ $90^{\circ}$ anti-clockwise about the origin.
 >
 > <center>
 > <img src="{{'/assets/graphs/12N_ComplexNumbers/12N_multiplication-by-i.svg'|relative_url}}" alt=''/>
