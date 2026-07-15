@@ -288,7 +288,7 @@ z_2 - z_1 &= (x_2 + iy_2) - (x_1+iy_1) \\
 
 > **Deductions**
 >
-> - $\begin{array}{l c}P_1P_2 &=& \left| \overrightarrow{p_1P_2} \right| \\ &=& \left\| z_2 - z_1 \right\|\end{array}$
+> - $\begin{array}{l c}P_1P_2 &=& \lvert \overrightarrow{p_1P_2} \rvert \\ &=& \lvert z_2 - z_1 \rvert \end{array}$
 >
 > - $arg(z_2 - z_1)$ is the angle between $P_1P_2$ and the **positive real direction**, equivalently, the positive x-axis.
 
